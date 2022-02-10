@@ -1,8 +1,7 @@
-import React from "react";
-import logo from "./logo.svg";
-import "./App.css";
+import React from 'react';
+import './App.css';
 
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const Title = styled.h1`
   font-size: 1.5em;
@@ -14,8 +13,8 @@ function App() {
   return (
     <div className="App">
       <Title>XState XSpace Playground</Title>
-      <div className="left"></div>
-      <div className="right"></div>
+      <div className="left" />
+      <div className="right" />
     </div>
   );
 }

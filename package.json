@@ -20,6 +20,7 @@
     "xstate": "^4.29.0"
   },
   "scripts": {
+    "lint": "eslint --fix",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "start": "react-scripts start",

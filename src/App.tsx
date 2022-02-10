@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import './App.css';
 
 import styled from 'styled-components';
 import { RootContainer } from './machines/root/components/container';
 import { StateMachineInitializer } from './machines/root';
+import { inspect } from '@xstate/inspect';
 
 const Title = styled.h1`
   font-size: 1.5em;
@@ -39,18 +40,30 @@ const Viz = styled.iframe`
 `;
 
 function App() {
+  const vizRef = useRef();
+
+  useEffect(() => {
+    const viz = vizRef.current;
+    if (viz) {
+      console.log('VIZZ', viz);
+      inspect({
+        iframe: viz,
+
+        url: 'https://stately.ai/viz?inspect',
+      });
+    }
+  }, [vizRef]);
   return (
-    <>
-      <StateMachineInitializer />
-      <AppContainer>
-        <LeftCont className="left">
+    <AppContainer>
+      <LeftCont className="left">
+        <StateMachineInitializer vizReady={!!vizRef.current}>
           <RootContainer />
-        </LeftCont>
-        <RightCont className="right">
-          <Viz id="viz" title="viz" />
-        </RightCont>
-      </AppContainer>
-    </>
+        </StateMachineInitializer>
+      </LeftCont>
+      <RightCont className="right">
+        <Viz ref={vizRef} id="viz" title="viz" />
+      </RightCont>
+    </AppContainer>
   );
 }
 

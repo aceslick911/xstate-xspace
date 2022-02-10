@@ -77,7 +77,7 @@ const RootActor = () =>
     },
   );
 
-export const StateMachineInitializer = () => {
+export const StateMachineInitializer = ({ children, vizReady }) => {
   const { service, send } = useContext(StateMachineContext);
 
   useEffect(() => {
@@ -89,10 +89,14 @@ export const StateMachineInitializer = () => {
     );
     log('Logger initialized');
   }, []);
-  return <></>;
+  if (!vizReady) {
+    return <div>{'Loading viz...'}</div>;
+  }
+  return <>{children}</>;
 };
 
 export const StateMachineProvider = ({ children }) => {
+  console.log('PROVIDER');
   const [state, send, service] = useMachine(() => RootActor(), {
     devTools: true,
   });

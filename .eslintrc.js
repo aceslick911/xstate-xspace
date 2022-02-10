@@ -67,6 +67,7 @@ module.exports = {
     'no-useless-catch': 'off',
     'no-useless-concat': 2,
     'no-useless-escape': 2,
+    'no-empty-pattern': 'off',
 
     // Typescript config to stop errors that conflict with our current coding style
     '@typescript-eslint/ban-ts-comment': ['off'],
@@ -77,6 +78,12 @@ module.exports = {
     '@typescript-eslint/ban-types': 'off',
 
     // React config to be compatible with our current coding styles
+    'react/jsx-filename-extension': [
+      1,
+      {
+        extensions: ['.ts', '.tsx', '.js', '.jsx'],
+      },
+    ],
     'import/extensions': ['error', 'never'],
     'react-hooks/exhaustive-deps': 'off',
     'react-hooks/rules-of-hooks': 'off',
@@ -92,11 +99,6 @@ module.exports = {
     'react/no-unused-state': 0,
     'react/prop-types': 0,
     'react/state-in-constructor': 0,
-    'react/jsx-filename-extension': [
-      1,
-      {
-        extensions: ['.ts', '.tsx', '.js', '.jsx'],
-      },
-    ],
+    'react/jsx-no-constructed-context-values': 'off',
   },
 };

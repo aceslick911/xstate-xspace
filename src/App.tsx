@@ -2,6 +2,8 @@ import React from 'react';
 import './App.css';
 
 import styled from 'styled-components';
+import { RootContainer } from './machines/root/components/container';
+import { StateMachineInitializer } from './machines/root';
 
 const Title = styled.h1`
   font-size: 1.5em;
@@ -24,14 +26,31 @@ const LeftCont = styled.div`
 const RightCont = styled.div`
   flex: 1 0;
   border: 1px solid green;
+
+  display: flex;
+  flex-direction: columns;
+
+  overflow: hidden;
+`;
+
+const Viz = styled.iframe`
+  flex: 1 0 100ch;
+  border: 1px solid red;
 `;
 
 function App() {
   return (
-    <AppContainer>
-      <LeftCont className="left" />
-      <RightCont className="right" />
-    </AppContainer>
+    <>
+      <StateMachineInitializer />
+      <AppContainer>
+        <LeftCont className="left">
+          <RootContainer />
+        </LeftCont>
+        <RightCont className="right">
+          <Viz id="viz" title="viz" />
+        </RightCont>
+      </AppContainer>
+    </>
   );
 }
 

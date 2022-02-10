@@ -9,13 +9,29 @@ const Title = styled.h1`
   color: palevioletred;
 `;
 
+const AppContainer = styled.div`
+  display: flex;
+  flex: 1 0;
+  flex-direction: row;
+  height: 100vh;
+`;
+
+const LeftCont = styled.div`
+  flex: 1 0;
+  border: 1px solid yellow;
+`;
+
+const RightCont = styled.div`
+  flex: 1 0;
+  border: 1px solid green;
+`;
+
 function App() {
   return (
-    <div className="App">
-      <Title>XState XSpace Playground</Title>
-      <div className="left" />
-      <div className="right" />
-    </div>
+    <AppContainer>
+      <LeftCont className="left" />
+      <RightCont className="right" />
+    </AppContainer>
   );
 }
 

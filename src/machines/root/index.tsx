@@ -14,6 +14,7 @@ import { createModel } from 'xstate/lib/model';
 import { Model } from 'xstate/lib/model.types';
 import { AnyState, SendType } from '../../types';
 import { initializeXStateLogger, log } from '../../Helpers/logging';
+import { testMachine } from '../test';
 
 // import { InPlayMachine } from '../../InPlay';
 
@@ -48,21 +49,32 @@ export const RootModel = createModel(
   },
 );
 
+const machineList = {
+  testMachine,
+};
+
 const RootActor = () =>
   RootModel.createMachine(
     {
       id: 'root',
       preserveActionOrder: true,
       context: RootModel.initialContext,
-      initial: 'starting',
+      initial: 'start',
       states: {
-        starting: {
+        start: {
+          id: 'start',
           type: 'parallel',
           states: {
             rootServices: {
               entry: 'notifyStarted',
               states: {
-                index: {},
+                testMachine: {
+                  invoke: {
+                    id: 'testMachine',
+                    src: testMachine,
+                    onDone: '#start',
+                  },
+                },
               },
             },
           },

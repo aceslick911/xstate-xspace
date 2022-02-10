@@ -5,12 +5,7 @@ import App from './App';
 import { StateMachineProvider } from './machines/root';
 // import reportWebVitals from './reportWebVitals';
 
-ReactDOM.render(
-  <StateMachineProvider>
-    <App />
-  </StateMachineProvider>,
-  document.getElementById('root'),
-);
+ReactDOM.render(<App />, document.getElementById('root'));
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

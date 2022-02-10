@@ -3,7 +3,7 @@ import './App.css';
 
 import styled from 'styled-components';
 import { RootContainer } from './machines/root/components/container';
-import { StateMachineInitializer } from './machines/root';
+import { StateMachineInitializer, StateMachineProvider } from './machines/root';
 import { inspect } from '@xstate/inspect';
 
 const Title = styled.h1`
@@ -56,8 +56,10 @@ function App() {
   return (
     <AppContainer>
       <LeftCont className="left">
-        <StateMachineInitializer vizReady={!!vizRef.current}>
-          <RootContainer />
+        <StateMachineInitializer vizReady={vizRef.current !== undefined}>
+          <StateMachineProvider>
+            <RootContainer />
+          </StateMachineProvider>
         </StateMachineInitializer>
       </LeftCont>
       <RightCont className="right">

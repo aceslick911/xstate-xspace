@@ -1,12 +1,14 @@
-import { useMachine } from '@xstate/react';
+import { useActor, useMachine } from '@xstate/react';
 import React, { useContext } from 'react';
 import { StateMachineContext } from '../../root';
 
-export const TestComponent = ({}) => {
+export const TestComponent = () => {
   const { service } = useContext(StateMachineContext);
-  const { testMachine } = service.children;
+  console.log('SERVICE', service);
+  const testMachine = service.children.get('testMachine');
+  console.log({ testMachine });
 
-  const [state, send, serv] = useMachine(testMachine, { devTools: true });
-
-  return <div>{JSON.stringify(state, null, 4)}</div>;
+  // const [state, send] = useActor(testMachine as any);
+  //{JSON.stringify(state, null, 4)}
+  return <div>{'HI'}</div>;
 };

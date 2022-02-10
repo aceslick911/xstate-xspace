@@ -76,6 +76,7 @@ module.exports = {
     '@typescript-eslint/no-explicit-any': 'warn',
     '@typescript-eslint/no-shadow': 'off',
     '@typescript-eslint/ban-types': 'off',
+    '@typescript-eslint/no-unused-vars': 'warn',
 
     // React config to be compatible with our current coding styles
     'react/jsx-filename-extension': [
